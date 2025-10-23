@@ -29,7 +29,6 @@ This project implements a **Convolutional Neural Network (CNN)** to classify ski
 ---
 
 ## Structure
-
 AML2_Project/
 │
 ├── data/ # Raw or sample data
