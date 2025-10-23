@@ -28,36 +28,6 @@ This project implements a **Convolutional Neural Network (CNN)** to classify ski
 
 ---
 
-## Structure
-AML2_Project/
-│
-├── data/ # Raw or sample data
-│ ├── metadata.csv
-│ └── images/ # Image dataset (LFS-tracked)
-│ ├── imgs_part_1/
-│ ├── imgs_part_2/
-│ └── imgs_part_3/
-│
-├── notebooks/ # Jupyter notebooks
-│ └── setup.ipynb # Data exploration, preprocessing, training
-│
-├── src/ # Helper scripts, model architecture, data pipeline
-│ ├── cnn_model.py
-│ └── preprocess.py
-│
-├── ui/ # Streamlit interface
-│ └── app.py
-│
-├── results/ # Visual outputs, metrics, plots
-│
-├── docs/ # Diagrams, blueprints, reports
-│
-├── README.md # Project documentation
-└── requirements.txt # List of dependencies
-
-
----
-
 ## Contents
 
 - `requirements.txt` → lists all dependencies  
