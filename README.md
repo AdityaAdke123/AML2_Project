@@ -1,126 +1,183 @@
-project:
-  title: "AML2_Project"
-  subtitle: "Automated Skin Cancer Detection Using CNNs"
+# 🧠 Automated Skin Cancer Detection Using CNNs
 
-overview:
-  description: >
-    This project implements a Convolutional Neural Network (CNN) to classify
-    skin lesion images as benign or malignant, aiming to support early detection
-    of skin cancer. Using deep learning, the model analyses dermatological images
-    from the PAD-UFES-20 dataset to identify potentially cancerous lesions and assist
-    in medical screening.
+This project builds a **Convolutional Neural Network (CNN)** model that classifies skin lesion images as **benign or malignant** to enable early detection of skin cancer using deep learning.
 
-objectives:
-  - Develop a CNN-based image classifier for skin lesion detection.
-  - Train and evaluate the model using real-world dermatological images.
-  - Provide a Streamlit web interface for users to upload and test images interactively.
-  - Analyse model interpretability through visualisation (Grad-CAM heatmaps).
+---
 
-dataset:
-  name: "PAD-UFES-20"
-  source: "https://data.mendeley.com/datasets/zr7vgbcyr2/1"
-  details:
-    total_images: 2298
-    patients: 1373
-    description: "Smartphone images with corresponding CSV metadata for each lesion."
-    classes:
-      benign:
-        - "NEV (Nevus)"
-        - "ACK (Actinic Keratosis)"
-        - "SEK (Seborrheic Keratosis)"
-      malignant:
-        - "BCC (Basal Cell Carcinoma)"
-        - "MEL (Melanoma)"
-        - "SCC (Squamous Cell Carcinoma)"
+## 📘 Overview
 
-structure: |
-  AML2_Project/
-  │
-  ├── data/                # Raw or sample data
-  │   ├── metadata.csv
-  │   └── images/          # Image dataset (LFS-tracked)
-  │       ├── imgs_part_1/
-  │       ├── imgs_part_2/
-  │       └── imgs_part_3/
-  │
-  ├── notebooks/           # Jupyter notebooks
-  │   └── setup.ipynb      # Data exploration, preprocessing, training
-  │
-  ├── src/                 # Helper scripts, model architecture, data pipeline
-  │   ├── cnn_model.py
-  │   └── preprocess.py
-  │
-  ├── ui/                  # Streamlit interface
-  │   └── app.py
-  │
-  ├── results/             # Visual outputs, metrics, plots
-  │
-  ├── docs/                # Diagrams, blueprints, reports
-  │
-  ├── README.md            # Project documentation
-  └── requirements.txt     # List of dependencies
+Skin cancer is among the most common cancers globally, and early detection significantly improves treatment outcomes. However, access to dermatological screening is limited in many regions.
 
-contents:
-  - file: "requirements.txt"
-    purpose: "Lists all dependencies required to run the project."
-  - file: "notebooks/setup.ipynb"
-    purpose: >
-      Demonstrates dataset loading, early exploration, and model training.
-      Includes summary statistics, class distribution, and initial results.
-  - note: "Code executes cleanly and produces visible output, such as sample predictions and accuracy plots."
+This project applies **deep learning (CNNs)** to classify skin lesion images from the **PAD-UFES-20 dataset** into benign and malignant categories, offering a potential step toward **automated, accessible skin cancer screening**.
 
-installation_and_setup:
-  steps:
-    - step: "Clone the repository"
-      command: |
-        git clone https://github.com/AdityaAdke123/AML2_Project.git
-        cd AML2_Project
-    - step: "Install dependencies"
-      command: |
-        pip install -r requirements.txt
-    - step: "Run the notebook"
-      command: |
-        jupyter notebook notebooks/setup.ipynb
-    - step: "Launch Streamlit interface"
-      command: |
-        streamlit run ui/app.py
+---
 
-results:
-  model_metrics_expected:
-    - metric: "Accuracy"
-      value: "90–92%"
-    - metric: "Precision"
-      value: "88%"
-    - metric: "Recall"
-      value: "91%"
-    - metric: "F1-Score"
-      value: "89%"
-    - metric: "ROC-AUC"
-      value: "0.93"
-  outputs:
-    - "Confusion matrix"
-    - "Sample predictions with confidence scores"
-    - "Grad-CAM heatmaps for interpretability"
+## 🧩 Dataset
 
-responsible_ai_reflection:
-  fairness: "Dataset includes diverse skin tones and demographics."
-  transparency: "Visual heatmaps illustrate model focus regions."
-  privacy: "All patient data is de-identified and used solely for research."
-  disclaimer: "This project is for educational and research use only, not medical diagnosis."
+**Name:** [PAD-UFES-20](https://data.mendeley.com/datasets/zr7vgbcyr2/1)  
+**Total Images:** 2,298  
+**Patients:** 1,373  
+**Format:** PNG images with accompanying `metadata.csv`
 
-author:
-  name: "Aditya Adke"
-  course: "Machine Learning 2 — Fall 2025"
-  university: "University of Florida"
-  email: "adityaadke123@gmail.com"
-  github: "https://github.com/AdityaAdke123"
+### Lesion Classes
 
-license:
-  type: "MIT License"
-  file: "LICENSE"
-  description: "Permission is granted to use, copy, modify, and distribute this software for educational purposes."
+| Category   | Classes                                                                 |
+|-------------|--------------------------------------------------------------------------|
+| Malignant   | BCC (Basal Cell Carcinoma), MEL (Melanoma), SCC (Squamous Cell Carcinoma) |
+| Benign      | NEV (Nevus), ACK (Actinic Keratosis), SEK (Seborrheic Keratosis)         |
 
-acknowledgments:
-  - "PAD-UFES-20 dataset authors (Pereira et al., 2020)"
-  - "TensorFlow and Streamlit open-source communities"
-  - "University of Florida — Applied Machine Learning 2 coursework"
+### Folder Structure
+```
+data/
+├── metadata.csv
+└── images/
+    ├── imgs_part_1/
+    ├── imgs_part_2/
+    └── imgs_part_3/
+```
+
+---
+
+## 📂 Project Structure
+```
+AML2_Project/
+├── data/                # Raw data and images
+│   ├── metadata.csv
+│   └── images/
+│       ├── imgs_part_1/
+│       ├── imgs_part_2/
+│       └── imgs_part_3/
+├── notebooks/           # Jupyter notebooks for EDA and modeling
+├── src/                 # Model scripts and helper functions
+├── ui/                  # Streamlit app interface
+├── results/             # Model results, plots, and metrics
+├── docs/                # Technical blueprint and design documents
+└── README.md            # Project overview
+```
+
+---
+
+## ⚙️ Methodology
+
+**Model Architecture:** Convolutional Neural Network (CNN)  
+**Frameworks:** TensorFlow, Keras
+
+### Approach
+1. Preprocess and augment dataset (resize, normalize, balance classes)  
+2. Train CNN using **transfer learning** (ResNet50 / VGG16)  
+3. Evaluate using **Accuracy, Precision, Recall, F1-score, ROC-AUC**  
+4. Integrate trained model into Streamlit UI for real-time prediction
+
+---
+
+## 🧭 Installation
+
+### Step 1 — Clone this repository
+```bash
+git clone https://github.com/AdityaAdke123/AML2_Project.git
+cd AML2_Project
+```
+
+### Step 2 — Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Step 3 — Download dataset
+Download the **PAD-UFES-20 dataset** and extract under:
+```
+data/images/
+```
+
+---
+
+## 🚀 Usage
+
+### 🔹 Train the CNN model
+```bash
+jupyter notebook notebooks/train_model.ipynb
+```
+
+### 🔹 Run Streamlit app
+```bash
+streamlit run ui/app.py
+```
+
+---
+
+## 💻 Streamlit App Features
+
+- Upload a dermoscopic image  
+- Classify lesion as **Benign** or **Malignant**  
+- Display prediction confidence  
+- Visualize **Grad-CAM heatmap** for explainability  
+
+### UI Layout (Example)
+```
+----------------------------------------------
+| Upload Image: [Choose File]                |
+|                                             |
+| [Predict]                                  |
+| Prediction: Malignant                      |
+| Confidence: 94%                            |
+| [Show Heatmap]                             |
+----------------------------------------------
+```
+
+---
+
+## 📊 Results
+
+| Metric       | Expected Value |
+|---------------|----------------|
+| Accuracy      | 90–92%         |
+| Precision     | 88%            |
+| Recall        | 91%            |
+| F1-Score      | 89%            |
+| ROC-AUC       | 0.93           |
+
+> *Results may vary depending on preprocessing and hyperparameter tuning.*
+
+---
+
+## 🤖 Responsible AI
+
+- **Fairness:** Model trained on diverse skin tones to minimize bias.  
+- **Transparency:** Predictions include probability and Grad-CAM visualization.  
+- **Privacy:** Dataset is de-identified and used only for research purposes.
+
+> ⚠️ *This project is for educational and research purposes only.  
+It is not intended for clinical use or medical diagnosis.*
+
+---
+
+## 🔮 Future Work
+
+- Expand dataset for improved generalization  
+- Add multi-class classification for all six lesion types  
+- Integrate Grad-CAM visualization in UI  
+- Deploy Streamlit app on Streamlit Cloud or Hugging Face Spaces  
+
+---
+
+## 👨‍💻 Author
+
+**Name:** Aditya Adke  
+**Role:** Graduate Student — Machine Learning 2  
+**University:** University of Florida  
+**Email:** [adityaadke123@gmail.com](mailto:adityaadke123@gmail.com)  
+**GitHub:** [https://github.com/AdityaAdke123](https://github.com/AdityaAdke123)
+
+---
+
+## 🪪 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **PAD-UFES-20 Dataset Authors:** Pereira et al. (2020)  
+- **University of Florida — Machine Learning 2 Course Project**  
+- **TensorFlow and Streamlit open-source communities**
