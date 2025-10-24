@@ -116,7 +116,7 @@ streamlit run ui/app.py
 ```
 ----------------------------------------------
 | Upload Image: [Choose File]                |
-|                                             |
+|                                            |
 | [Predict]                                  |
 | Prediction: Malignant                      |
 | Confidence: 94%                            |
@@ -128,7 +128,7 @@ streamlit run ui/app.py
 
 ## 📊 Results
 
-| Metric       | Expected Value |
+| Metric        | Expected Value |
 |---------------|----------------|
 | Accuracy      | 90–92%         |
 | Precision     | 88%            |
@@ -146,9 +146,6 @@ streamlit run ui/app.py
 - **Transparency:** Predictions include probability and Grad-CAM visualization.  
 - **Privacy:** Dataset is de-identified and used only for research purposes.
 
-> ⚠️ *This project is for educational and research purposes only.  
-It is not intended for clinical use or medical diagnosis.*
-
 ---
 
 ## 🔮 Future Work
@@ -165,14 +162,8 @@ It is not intended for clinical use or medical diagnosis.*
 **Name:** Aditya Adke  
 **Role:** Graduate Student — Machine Learning 2  
 **University:** University of Florida  
-**Email:** [adityaadke123@gmail.com](mailto:adityaadke123@gmail.com)  
+**Email:** a.adke@ufl.edu 
 **GitHub:** [https://github.com/AdityaAdke123](https://github.com/AdityaAdke123)
-
----
-
-## 🪪 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 
