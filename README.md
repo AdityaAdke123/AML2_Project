@@ -26,6 +26,10 @@ This project applies **deep learning (CNNs)** to classify skin lesion images fro
 | Malignant   | BCC (Basal Cell Carcinoma), MEL (Melanoma), SCC (Squamous Cell Carcinoma) |
 | Benign      | NEV (Nevus), ACK (Actinic Keratosis), SEK (Seborrheic Keratosis)         |
 
+imgs_part_1: https://drive.google.com/drive/folders/1jc0aqK7NXcvcPZ9mTsDXV5um9cdAn5gG?usp=sharing
+imgs_part_2: https://drive.google.com/drive/folders/1_1JznLOqsZ8ujQWIiP3SbViFQDdPKDZf?usp=drive_link
+imgs_part_3: https://drive.google.com/drive/folders/1X1XbENwMkjVtsp74QRP82FTyWI2tEIUt?usp=drive_link
+
 ### Folder Structure
 ```
 data/
