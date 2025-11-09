@@ -134,9 +134,7 @@ streamlit run ui/app.py
 - Visualize **Grad-CAM heatmap** for explainability  
 
 ### UI Layout 
-```
 
----
 
 ## 📊 Results
 
