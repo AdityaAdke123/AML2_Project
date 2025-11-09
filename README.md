@@ -135,9 +135,7 @@ streamlit run ui/app.py
 
 ### UI Layout 
 ```
-<img width="1205" height="620" alt="Screenshot 2025-11-08 222341" src="https://github.com/user-attachments/assets/45445067-fcc9-4934-aa48-4bbf14e8aaf0" />
-```
-
+<img width="1205" height="620" alt="Screenshot 2025-11-08 222341" src="https://github.com/user-attachments/assets/503bed25-a106-4903-a07c-c988f40934e6" />
 ---
 
 ## 📊 Results
