@@ -103,15 +103,16 @@ Download the **PAD-UFES-20 dataset** and extract under:
 data/images/
 ```
 ## ⚙️ Model Details
-
+```
 **Frameworks:** TensorFlow, Keras
 **Architecture:** Custom CNN (Conv2D → MaxPool → Dropout → Dense)
 **Training Epochs:** 20
 **Image Size:** 224 × 224 pixels
 **Explainability Tools:** LIME, SHAP
 **Interface:** Gradio app with real-time visualization
----
 
+```
+---
 ## 🚀 Usage
 
 ### 🔹 Train the CNN model
@@ -123,15 +124,6 @@ jupyter notebook notebooks/train_model.ipynb
 ```bash
 streamlit run ui/app.py
 ```
-
----
-
-## 💻 Streamlit App Features
-
-- Upload a dermoscopic image  
-- Classify lesion as **Benign** or **Malignant**  
-- Display prediction confidence  
-- Visualize **Grad-CAM heatmap** for explainability  
 
 ### UI Layout 
 
