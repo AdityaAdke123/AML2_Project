@@ -1,36 +1,44 @@
-# 🧠 Automated Skin Cancer Detection Using CNNs
+# 🩺 Skin Lesion Classification with Explainable AI (LIME + SHAP)
 
-This project builds a **Convolutional Neural Network (CNN)** model that classifies skin lesion images as **benign or malignant** to enable early detection of skin cancer using deep learning.
+This project implements an **end-to-end Explainable AI (XAI)** pipeline for **skin lesion classification** using a **Convolutional Neural Network (CNN)** model combined with **LIME** and **SHAP** interpretability methods. The system not only predicts lesion types but also visualises the reasoning behind its predictions, promoting **trust and transparency in AI-assisted dermatology**.
 
 ---
 
 ## 📘 Overview
 
-Skin cancer is among the most common cancers globally, and early detection significantly improves treatment outcomes. However, access to dermatological screening is limited in many regions.
+Skin cancer detection through image-based machine learning offers a scalable, accessible way to support early diagnosis. This project uses deep learning on the **PAD-UFES-20 dataset** to classify lesions into six categories while providing interpretable explanations for clinicians.
 
-This project applies **deep learning (CNNs)** to classify skin lesion images from the **PAD-UFES-20 dataset** into benign and malignant categories, offering a potential step toward **automated, accessible skin cancer screening**.
+The model was trained, validated, and deployed with an integrated **Gradio interface**, allowing users to upload images, view predictions, and examine interpretability visualisations.
 
 ---
 
 ## 🧩 Dataset
 
-**Name:** [PAD-UFES-20](https://data.mendeley.com/datasets/zr7vgbcyr2/1)  
-**Total Images:** 2,298  
-**Patients:** 1,373  
-**Format:** PNG images with accompanying `metadata.csv`
+**Dataset:** [PAD-UFES-20](https://data.mendeley.com/datasets/zr7vgbcyr2/1)  
+**Images:** 2,298 PNG images from 1,373 patients  
+**Metadata:** `metadata.csv`
 
 ### Lesion Classes
 
-| Category   | Classes                                                                 |
-|-------------|--------------------------------------------------------------------------|
-| Malignant   | BCC (Basal Cell Carcinoma), MEL (Melanoma), SCC (Squamous Cell Carcinoma) |
-| Benign      | NEV (Nevus), ACK (Actinic Keratosis), SEK (Seborrheic Keratosis)         |
+| Code | Medical Name             |
+|------|--------------------------|
+| ACK  | Actinic Keratoses        |
+| BCC  | Basal Cell Carcinoma     |
+| BKL  | Benign Keratosis         |
+| DFB  | Dermatofibroma           |
+| MEL  | Melanoma                 |
+| NEV  | Nevus                    |
 
-imgs_part_1: https://drive.google.com/drive/folders/1jc0aqK7NXcvcPZ9mTsDXV5um9cdAn5gG?usp=sharing
+### Google Drive Dataset Links
+- [imgs_part_1](https://drive.google.com/drive/folders/1jc0aqK7NXcvcPZ9mTsDXV5um9cdAn5gG?usp=sharing)
+- [imgs_part_2](https://drive.google.com/drive/folders/1_1JznLOqsZ8ujQWIiP3SbViFQDdPKDZf?usp=drive_link)
+- [imgs_part_3](https://drive.google.com/drive/folders/1X1XbENwMkjVtsp74QRP82FTyWI2tEIUt?usp=drive_link)
 
-imgs_part_2: https://drive.google.com/drive/folders/1_1JznLOqsZ8ujQWIiP3SbViFQDdPKDZf?usp=drive_link
+---
 
-imgs_part_3: https://drive.google.com/drive/folders/1X1XbENwMkjVtsp74QRP82FTyWI2tEIUt?usp=drive_link
+## 📁 Folder Structure
+
+
 
 ### Folder Structure
 ```
@@ -94,7 +102,14 @@ Download the **PAD-UFES-20 dataset** and extract under:
 ```
 data/images/
 ```
+## ⚙️ Model Details
 
+**Frameworks:** TensorFlow, Keras
+**Architecture:** Custom CNN (Conv2D → MaxPool → Dropout → Dense)
+**Training Epochs:** 20
+**Image Size:** 224 × 224 pixels
+**Explainability Tools:** LIME, SHAP
+**Interface:** Gradio app with real-time visualization
 ---
 
 ## 🚀 Usage
@@ -118,31 +133,47 @@ streamlit run ui/app.py
 - Display prediction confidence  
 - Visualize **Grad-CAM heatmap** for explainability  
 
-### UI Layout (Example)
+### UI Layout 
 ```
-----------------------------------------------
-| Upload Image: [Choose File]                |
-|                                            |
-| [Predict]                                  |
-| Prediction: Malignant                      |
-| Confidence: 94%                            |
-| [Show Heatmap]                             |
-----------------------------------------------
+<img width="1205" height="620" alt="Screenshot 2025-11-08 222341" src="https://github.com/user-attachments/assets/45445067-fcc9-4934-aa48-4bbf14e8aaf0" />
 ```
 
 ---
 
 ## 📊 Results
 
-| Metric        | Expected Value |
-|---------------|----------------|
-| Accuracy      | 90–92%         |
-| Precision     | 88%            |
-| Recall        | 91%            |
-| F1-Score      | 89%            |
-| ROC-AUC       | 0.93           |
+Test Accuracy: 51.3%
+Best Validation Accuracy: 47%
+Metrics:
 
+- Precision (weighted): 45.9%
+
+- Recall (weighted): 48.7%
+
+- F1-Score: 44.0%
+
+Visual Outputs:
+
+- Confusion Matrix
+
+- Sample Prediction Plots
+
+- LIME and SHAP Explanations
+
+These early results confirm that the model can identify lesion patterns but still requires fine-tuning and larger, more balanced data for higher accuracy.
 > *Results may vary depending on preprocessing and hyperparameter tuning.*
+
+---
+
+## ⚠️ Known Issues
+
+- Model performance limited by dataset imbalance.
+
+- LIME visualization sometimes fails to highlight clear regions.
+
+- Requires GPU for smooth training and explanation generation.
+
+- Gradio visualization may not render yellow LIME contours for all samples.
 
 ---
 
@@ -151,15 +182,6 @@ streamlit run ui/app.py
 - **Fairness:** Model trained on diverse skin tones to minimize bias.  
 - **Transparency:** Predictions include probability and Grad-CAM visualization.  
 - **Privacy:** Dataset is de-identified and used only for research purposes.
-
----
-
-## 🔮 Future Work
-
-- Expand dataset for improved generalization  
-- Add multi-class classification for all six lesion types  
-- Integrate Grad-CAM visualization in UI  
-- Deploy Streamlit app on Streamlit Cloud or Hugging Face Spaces  
 
 ---
 
