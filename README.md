@@ -182,11 +182,6 @@ jupyter notebook notebooks/train_model.ipynb
 streamlit run ui/app.py
 ```
 
-### UI Layout 
-<img width="1205" height="620" alt="Screenshot 2025-11-08 222341" src="https://github.com/user-attachments/assets/f27938ca-7fb2-48b2-bb53-aa7a7b932616" />
-
----
-
 ## ⚠️ Known Issues
 
 - Integrated Gradients heatmaps may appear low-contrast depending on lesion texture
@@ -210,6 +205,9 @@ streamlit run ui/app.py
 - Model is presented for research and educational purposes only
 
 - Ethically aligned with transparent AI guidelines
+
+<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/c27ffbf8-0ec8-4c7f-8277-38c1c9242058" />
+
 
 ---
 
