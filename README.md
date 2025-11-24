@@ -38,7 +38,6 @@ Unlike traditional black-box models, this system integrates **visual explanation
 | ACK  | Actinic Keratoses            |
 | BCC  | Basal Cell Carcinoma         |
 | BKL  | Benign Keratosis             |
-| DFB  | Dermatofibroma               |
 | MEL  | Melanoma                     |
 | NEV  | Nevus                        |
 | SEK  | Seborrheic Keratosis         |
