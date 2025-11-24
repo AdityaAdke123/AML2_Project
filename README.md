@@ -1,38 +1,52 @@
-# 🩺 Skin Lesion Classification with Explainable AI (LIME + SHAP)
+# 🩺 Skin Lesion Classification with Explainable AI (LIME + Integrated Gradients)
 
-This project implements an **end-to-end Explainable AI (XAI)** pipeline for **skin lesion classification** using a **Convolutional Neural Network (CNN)** model combined with **LIME** and **SHAP** interpretability methods. The system not only predicts lesion types but also visualises the reasoning behind its predictions, promoting **trust and transparency in AI-assisted dermatology**.
+<img width="1184" height="757" alt="Screenshot 2025-11-23 175742" src="https://github.com/user-attachments/assets/eab50192-79a8-443e-b371-48e53e121a4a" />
+
+
+This project implements an **end-to-end Explainable AI (XAI)** pipeline for automated skin lesion classification using **EfficientNetB0**, paired with **LIME** and **Integrated Gradients** for transparent interpretability.  
+The final system includes a modern **Gradio interface** with probability bars, dual-explanation modes, preprocessing previews, and an elegant UI designed for clinical-style decision support.
 
 ---
 
 ## 📘 Overview
 
-Skin cancer detection through image-based machine learning offers a scalable, accessible way to support early diagnosis. This project uses deep learning on the **PAD-UFES-20 dataset** to classify lesions into six categories while providing interpretable explanations for clinicians.
+Skin cancer remains one of the most common cancers globally, and **early detection** dramatically improves survival outcomes.  
+This project leverages dermatoscopic images from the **PAD-UFES-20 dataset** to classify lesions into:
 
-The model was trained, validated, and deployed with an integrated **Gradio interface**, allowing users to upload images, view predictions, and examine interpretability visualisations.
+- Basal Cell Carcinoma (BCC)  
+- Squamous Cell Carcinoma (SCC)  
+- Melanoma (MEL)  
+- Nevus (NEV)  
+- Actinic Keratoses (ACK)  
+- Seborrheic Keratosis (SEK)  
+
+Unlike traditional black-box models, this system integrates **visual explanation layers** (LIME + IG) to ensure transparency and support trust in AI-assisted dermatology.
 
 ---
 
 ## 🧩 Dataset
 
-**Dataset:** [PAD-UFES-20](https://data.mendeley.com/datasets/zr7vgbcyr2/1)  
-**Images:** 2,298 PNG images from 1,373 patients  
-**Metadata:** `metadata.csv`
+**Dataset:** PAD-UFES-20  
+**Total Images:** 2,298  
+**Patients:** 1,373  
+**Metadata File:** `metadata.csv`
 
 ### Lesion Classes
 
-| Code | Medical Name             |
-|------|--------------------------|
-| ACK  | Actinic Keratoses        |
-| BCC  | Basal Cell Carcinoma     |
-| BKL  | Benign Keratosis         |
-| DFB  | Dermatofibroma           |
-| MEL  | Melanoma                 |
-| NEV  | Nevus                    |
+| Code | Label                       |
+|------|------------------------------|
+| ACK  | Actinic Keratoses            |
+| BCC  | Basal Cell Carcinoma         |
+| BKL  | Benign Keratosis             |
+| DFB  | Dermatofibroma               |
+| MEL  | Melanoma                     |
+| NEV  | Nevus                        |
+| SEK  | Seborrheic Keratosis         |
 
-### Google Drive Dataset Links
-- [imgs_part_1](https://drive.google.com/drive/folders/1jc0aqK7NXcvcPZ9mTsDXV5um9cdAn5gG?usp=sharing)
-- [imgs_part_2](https://drive.google.com/drive/folders/1_1JznLOqsZ8ujQWIiP3SbViFQDdPKDZf?usp=drive_link)
-- [imgs_part_3](https://drive.google.com/drive/folders/1X1XbENwMkjVtsp74QRP82FTyWI2tEIUt?usp=drive_link)
+### Dataset Download Links (Google Drive Mirrors)
+- imgs_part_1 — https://drive.google.com/drive/folders/1jc0aqK7NXcvcPZ9mTsDXV5um9cdAn5gG  
+- imgs_part_2 — https://drive.google.com/drive/folders/1_1JznLOqsZ8ujQWIiP3SbViFQDdPKDZf  
+- imgs_part_3 — https://drive.google.com/drive/folders/1X1XbENwMkjVtsp74QRP82FTyWI2tEIUt  
 
 ---
 
@@ -71,16 +85,59 @@ AML2_Project/
 
 ---
 
+
+---
+
 ## ⚙️ Methodology
 
-**Model Architecture:** Convolutional Neural Network (CNN)  
-**Frameworks:** TensorFlow, Keras
+### 🔸 Model
+- **Architecture:** EfficientNetB0  
+- **Input Size:** 224 × 224  
+- **Loss:** Categorical Crossentropy  
+- **Optimizer:** Adam  
+- **Class Weights:** Enabled (to address imbalance)  
 
-### Approach
-1. Preprocess and augment dataset (resize, normalize, balance classes)  
-2. Train CNN using **transfer learning** (ResNet50 / VGG16)  
-3. Evaluate using **Accuracy, Precision, Recall, F1-score, ROC-AUC**  
-4. Integrate trained model into Streamlit UI for real-time prediction
+### 🔸 Explainability
+| Method | Description |
+|--------|-------------|
+| **LIME** | Superpixel-based local interpretability |
+| **Integrated Gradients** | Pixel attribution using gradient accumulation |
+
+### 🔸 UI (Gradio)
+- Modern card-based layout  
+- Tabs: **Classifier** and **About & Disclaimer**
+- Toggles for:
+  - LIME  
+  - Integrated Gradients  
+  - LIME + IG  
+  - None (fast prediction)
+- Light/Dark theme switch  
+- Confidence probability bar chart  
+- Preprocessing visualisation  
+- Explanation interpretation text  
+
+---
+
+## 📊 Performance (Phase 3 Final Model)
+
+### EfficientNetB0 Results
+| Metric               | Score   |
+| -------------------- | ------- |
+| **Test Accuracy**    | **73%** |
+| Validation Accuracy  | ~65%    |
+| Precision (weighted) | 64%     |
+| Recall (weighted)    | 67%     |
+| F1-Score (weighted)  | 65%     |
+
+
+### Why the accuracy is not higher?
+- Dataset is **highly imbalanced**
+- Some lesion categories are visually **very similar**
+- Dermatology requires **fine-grained texture clues**  
+- Dataset size is small compared to ISIC standards  
+- Lighting variations and noisy backgrounds  
+
+Even with these constraints, the model shows strong baseline performance with transparent decision pathways.
 
 ---
 
@@ -128,49 +185,31 @@ streamlit run ui/app.py
 ### UI Layout 
 <img width="1205" height="620" alt="Screenshot 2025-11-08 222341" src="https://github.com/user-attachments/assets/f27938ca-7fb2-48b2-bb53-aa7a7b932616" />
 
-
-## 📊 Results
-
-Test Accuracy: 51.3%
-Best Validation Accuracy: 47%
-Metrics:
-
-- Precision (weighted): 45.9%
-
-- Recall (weighted): 48.7%
-
-- F1-Score: 44.0%
-
-Visual Outputs:
-
-- Confusion Matrix
-
-- Sample Prediction Plots
-
-- LIME and SHAP Explanations
-
-These early results confirm that the model can identify lesion patterns but still requires fine-tuning and larger, more balanced data for higher accuracy.
-> *Results may vary depending on preprocessing and hyperparameter tuning.*
-
 ---
 
 ## ⚠️ Known Issues
 
-- Model performance limited by dataset imbalance.
+- Integrated Gradients heatmaps may appear low-contrast depending on lesion texture
 
-- LIME visualization sometimes fails to highlight clear regions.
+- LIME is stochastic → results vary slightly per run
 
-- Requires GPU for smooth training and explanation generation.
+- GPU is strongly recommended for faster explanation generation
 
-- Gradio visualization may not render yellow LIME contours for all samples.
+- Minor rendering differences possible in Gradio Cloud
 
 ---
 
 ## 🤖 Responsible AI
 
-- **Fairness:** Model trained on diverse skin tones to minimize bias.  
-- **Transparency:** Predictions include probability and Grad-CAM visualization.  
-- **Privacy:** Dataset is de-identified and used only for research purposes.
+- Explanations accompany every prediction
+
+- Uncertainty visualised via probability bars
+
+- Only de-identified medical images used
+
+- Model is presented for research and educational purposes only
+
+- Ethically aligned with transparent AI guidelines
 
 ---
 
